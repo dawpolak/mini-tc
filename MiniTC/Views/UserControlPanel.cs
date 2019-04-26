@@ -16,27 +16,7 @@ namespace MiniTC
         public UserControlPanel()
         { 
             InitializeComponent();
-           // myInit();
         } 
-
-        private void myInit()
-        {
-            #region Pobranie dyskow logicznych
-            string[] drives = new string[System.Environment.GetLogicalDrives().Length];
-            int i = 0;
-            foreach (string dr in System.Environment.GetLogicalDrives())
-            {
-                System.IO.DriveInfo di = new System.IO.DriveInfo(dr);
-                if (di.IsReady)
-                {
-                    drives[i]= dr;
-                    i++;
-                }
-            }
-            Array.Resize<string>(ref drives, i);
-            Drives = drives;
-            #endregion
-        }
 
         #region Implementacja IPanel
         public string CurrentPath
@@ -54,7 +34,7 @@ namespace MiniTC
         {
             get
             {
-                return new[] { comboBoxDrives.SelectedItem.ToString() };
+                if (comboBoxDrives.Items.Count!=0 && comboBoxDrives.SelectedIndex!=-1) return new[] { comboBoxDrives.SelectedItem.ToString() }; else return new[] {"null"};
             }
             set
             {
@@ -62,17 +42,17 @@ namespace MiniTC
                 comboBoxDrives.Items.AddRange(value);
             }
         }
-        public string[] Files
+        public FolderOrFile[] Files
         {
             get
             {
                 //return new[] { listBoxFiles.SelectedItem.ToString() };
-                List<string> tmp = new List<string>();
-                foreach (string el in listBoxFiles.Items)
+                List<FolderOrFile> tmp = new List<FolderOrFile>();
+                foreach (FolderOrFile el in listBoxFiles.Items)
                 {
-                    tmp.Add(el.ToString());
+                    tmp.Add(el);
                 }
-                string[] files = tmp.ToArray();
+                FolderOrFile[] files = tmp.ToArray();
                 return files;
             }
             set
@@ -83,21 +63,6 @@ namespace MiniTC
                 //{
                 //    comboBox1.Items.Add(d);
                 //}
-            }
-        }
-        public List<string> Filess
-        {
-            get
-            {
-                return new List<string> { listBoxFiles.Items.ToString() };
-            }
-            set
-            {
-                listBoxFiles.Items.Clear();
-                foreach (var d in value)
-                {
-                    listBoxFiles.Items.Add(d);
-                }
             }
         }
         public int SelectedIndex

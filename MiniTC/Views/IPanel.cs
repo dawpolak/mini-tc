@@ -10,8 +10,7 @@ namespace MiniTC
     {
         string CurrentPath { get; set; }
         string[] Drives { get; set; }
-        string[] Files { get; set; }
-        List<string> Filess { get; set; }
+        FolderOrFile[] Files { get; set; }
         int SelectedIndex { get; set; }
 
         event Action SelectedDriveChanged;

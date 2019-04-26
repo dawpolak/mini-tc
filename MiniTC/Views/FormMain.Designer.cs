@@ -33,7 +33,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.userControlPanelRight = new MiniTC.UserControlPanel();
             this.userControlPanelLeft = new MiniTC.UserControlPanel();
-            this.userControlPanel1 = new MiniTC.UserControlPanel();
             this.SuspendLayout();
             // 
             // buttonMove
@@ -86,15 +85,6 @@
             this.userControlPanelLeft.TabIndex = 0;
             this.userControlPanelLeft.SelectedListBox += new System.Action(this.userControlPanelLeft_SelectedListBox);
             // 
-            // userControlPanel1
-            // 
-            this.userControlPanel1.CurrentPath = "";
-            this.userControlPanel1.Location = new System.Drawing.Point(483, 12);
-            this.userControlPanel1.Name = "userControlPanel1";
-            this.userControlPanel1.SelectedIndex = -1;
-            this.userControlPanel1.Size = new System.Drawing.Size(397, 469);
-            this.userControlPanel1.TabIndex = 1;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -118,7 +108,6 @@
         private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.Button buttonCopy;
         private System.Windows.Forms.Button buttonDelete;
-        private UserControlPanel userControlPanel1;
     }
 }
 

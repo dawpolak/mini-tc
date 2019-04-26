@@ -30,11 +30,12 @@ namespace MiniTC
         private void View_SelectedDriveChanged()
         {
             view.CurrentPath = model.ChangeDrive(view.Drives);
+            if(view.CurrentPath=="")view.Drives= model.SetDrives();
         }
 
         private void View_PathChanged()
         {
-            view.Files = model.SetFiles(view.Drives,view.CurrentPath);
+            if(view.Drives[0] != "null")view.Files = model.SetFiles(view.Drives,view.CurrentPath);
         }
 
         private void View_FolderDoubleClick()
